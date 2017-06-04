@@ -1,0 +1,79 @@
+Q.  Write a java program to implement TRAVELLING SALES PERSON PROBLEM using Dynamic programming
+
+
+import java.util.Scanner;
+class tsp
+{
+    int n,cost=0;
+    int [][]a=new int[10][10];
+    int []visited=new int[10];
+    void get()
+    {
+       int i,j;
+       System.out.println("Enterof cities");
+       Scanner sc=new Scanner(System.in);
+       n=sc.nextInt();
+       System.out.println("Enter Matrix");
+       for(i=0;i<n;i++)
+       {
+          System.out.println("Enterents of Row:"+(i+1));
+          for(j=0;j<n;j++)
+             a[i][j]=sc.nextInt();
+          visited[i]=0;
+       }
+       System.out.println("The list is:");
+       for(i=0;i<n;i++)
+       {
+            System.out.println("\t           for(j=0;j<n;j++)
+               System.out.println(a[i][j]);
+       } 
+   }
+   void mincost(int city)
+   {
+        int i,ncity;
+        visited[city]=1;
+        System.out.println(" "+(city+1));
+        ncity=least(city);
+        if(ncity==999)
+        {
+            ncity=0;
+            System.out.println(" "+(ncity+1));
+            cost+=a[city][ncity];
+            return;
+        }
+        mincost(ncity);
+  }
+  int least(int c)
+  {
+      int i,nc=999;
+      int min=999,kmin=0;
+      for(i=0;i<n;i++)
+      {
+           if((a[c][i]!=0)&&visited[i]==0)
+               if(a[c][i]<min)
+               {
+                   min=a[c][0]+a[c][i];
+                   kmin=a[c][i];
+                   nc=i;
+               }
+     }
+     if(min!=999)
+        cost+=kmin;
+     return nc;
+  }
+  void put()
+  {
+      System.out.println("Minimum = "+cost);
+  }
+}
+public class tspdynamic
+{
+    public static void main()
+    {
+        tsp ob=new tsp();
+        ob.get();
+        System.out.println("The is");
+        ob.mincost(0);
+        ob.put();
+    }
+ }
