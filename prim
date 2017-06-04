@@ -1,0 +1,57 @@
+
+  Q.Find Minimum Cost Spanning Tree of a given connected undirected graph using prim's algorithm
+
+ import java.util.Scanner;
+ class prims
+  {
+       public static void main(String args[])
+       {
+            int w[][]=new int[10][10];
+            int n,i,j,s,k=0;
+            int min,sum=0,u=0,v=0;
+            int flag=0;
+            int sol[]=new int[10];
+            System.out.println("Enternumber of vertices");
+            Scanner sc=new Scanner(System.in);
+            n=sc.nextInt();
+            for(i=1;i<=n;i++)
+               sol[i]=0;
+            System.out.println("Enterhted Graph");
+            for(i=1;i<=n;i++)
+               for(j=1;j<=n;j++)
+                   w[i][j]=sc.nextInt();
+            System.out.println("Enterce vertex");
+            s=sc.nextInt();
+            sol[s]=1;
+            k=1;
+            while(k<=n-1)
+            {
+                min=99;
+                for(i=1;i<=n;i++)
+                {
+                    for(j=1;j<=n;j++)
+                     {
+                          if((sol[i]==1)&&(sol[j]==0))
+                          {
+                              if((i!=j)&&(min>w[i][j]))
+                               {
+                                    min=w[i][j];
+                                    u=i;
+                                    v=j;
+                               }
+                          }
+                     }
+                }
+                sol[v]=1;
+                sum+=min;
+                k++;
+                System.out.println(u+"->"+v+"="+min  for(i=1;i<=n;i++)
+             if(sol[i]==0)
+                   flag=1;
+          if(flag==1)
+             System.out.println("Noning Tree");
+          else
+            System.out.println("The of minimum cost spanning tree is "+sum);
+         sc.close();
+     }
+}
