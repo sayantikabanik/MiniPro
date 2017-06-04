@@ -1,0 +1,55 @@
+Q.Design and implement in java to find a subset of given set S={s1,s2,s3...sn} of n positive integers whose SUM is equal to given positive integer d.Display Suitable messages...
+
+
+import java.util.*;
+class Sumofsubsets
+{
+      static int w[],x[],i,j,s=0,k=1,r=0,m,n;
+      void read()
+      {
+          Scanner sc=new Scanner(System.in);
+          System.out.println("Enterer values");
+          n=sc.nextInt();
+          w=new int[n+1];
+          x=new int[n+1];
+         System.out.println("Enteresponding Weights");
+         for(i=1;i<=n;i++)
+         {
+              System.out.println("Enterweight");
+              w[i]=sc.nextInt();
+              r+=w[i];
+              x[i]=0;
+         }
+         System.out.println("Entertotal sum");
+         m=sc.nextInt();
+     }
+     void sumofsubset(int s,int k,int r)
+     {
+         if(s+w[k]==m)
+        {
+            x[k]=1;
+            System.out.println("Possibleomes");
+            for(i=1;i<=n;i++)
+                System.out.println(" "+x[i]);
+            System.out.println();
+         }
+         else if(s+w[k]+w[k+1]<=m)
+         {
+             x[k]=1;
+             sumofsubset(s+w[k],k+1,r-w[k]);
+         }
+         if ((s+r-w[k]>=m)&&(s+w[k+1]<=m))
+         {
+             x[k]=0;
+             sumofsubset(s,k+1,r-w[k]);
+         }
+   }
+   public static void main(String args[])
+   {
+       Sumofsubsets ss=new Sumofsubsets();
+       ss.read();
+       ss.sumofsubset(s,k,r);
+   }
+}
+ 
+ 
